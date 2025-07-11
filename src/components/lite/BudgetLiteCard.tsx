@@ -9,6 +9,8 @@ interface BudgetLiteCardProps {
   onViewPDF: (budget: any) => void;
   onEdit: (budget: any) => void;
   onDelete: (budget: any) => void;
+  isGenerating?: boolean;
+  isDeleting?: boolean;
 }
 
 export const BudgetLiteCard = ({
@@ -17,7 +19,9 @@ export const BudgetLiteCard = ({
   onShareWhatsApp,
   onViewPDF,
   onEdit,
-  onDelete
+  onDelete,
+  isGenerating = false,
+  isDeleting = false
 }: BudgetLiteCardProps) => {
   if (!budget || !budget.id || budget.deleted_at) {
     return null;
@@ -102,10 +106,11 @@ export const BudgetLiteCard = ({
         
         <button
           onClick={() => onViewPDF(budget)}
-          className="flex items-center justify-center gap-2 py-2 px-3 bg-blue-50 text-blue-700 border border-blue-200 rounded-md text-sm font-medium hover:bg-blue-100"
+          disabled={isGenerating}
+          className="flex items-center justify-center gap-2 py-2 px-3 bg-blue-50 text-blue-700 border border-blue-200 rounded-md text-sm font-medium hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <FileText className="h-4 w-4" />
-          Ver PDF
+          {isGenerating ? 'Gerando...' : 'Ver PDF'}
         </button>
         
         <button
@@ -118,10 +123,11 @@ export const BudgetLiteCard = ({
         
         <button
           onClick={() => onDelete(budget)}
-          className="flex items-center justify-center gap-2 py-2 px-3 bg-red-50 text-red-700 border border-red-200 rounded-md text-sm font-medium hover:bg-red-100"
+          disabled={isDeleting}
+          className="flex items-center justify-center gap-2 py-2 px-3 bg-red-50 text-red-700 border border-red-200 rounded-md text-sm font-medium hover:bg-red-100 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Trash2 className="h-4 w-4" />
-          Excluir
+          {isDeleting ? 'Excluindo...' : 'Excluir'}
         </button>
       </div>
     </div>
