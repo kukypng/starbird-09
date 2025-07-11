@@ -70,7 +70,8 @@ export const SettingsLite = ({
       case 'profile':
         return <div className="space-y-4">
             <div>
-              <Label htmlFor="full_name">Nome Completo</Label>
+              <Label htmlFor="full_name">Nome
+            </Label>
               <Input id="full_name" type="text" inputMode="text" value={formData.full_name} onChange={e => setFormData(prev => ({
               ...prev,
               full_name: e.target.value
