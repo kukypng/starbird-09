@@ -76,13 +76,7 @@ export const SettingsLite = ({
               full_name: e.target.value
             }))} className="mt-1" />
             </div>
-            <div>
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" inputMode="email" value={formData.email} disabled className="mt-1 bg-muted" />
-              <p className="text-xs text-muted-foreground mt-1">
-                Email não pode ser alterado aqui
-              </p>
-            </div>
+            
             
           </div>;
       case 'company':
