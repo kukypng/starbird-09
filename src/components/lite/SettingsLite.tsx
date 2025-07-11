@@ -138,9 +138,9 @@ export const SettingsLite = ({ userId, profile, onBack }: SettingsLiteProps) => 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <Label>Modo Lite</Label>
+                <Label>Dashboard iOS</Label>
                 <p className="text-xs text-muted-foreground">
-                  Manter versão otimizada para iPhone
+                  Manter versão otimizada para dispositivos móveis
                 </p>
               </div>
               <Switch
@@ -171,10 +171,10 @@ export const SettingsLite = ({ userId, profile, onBack }: SettingsLiteProps) => 
             
             <div className="p-3 bg-muted/50 rounded-lg">
               <p className="text-sm text-muted-foreground">
-                O modo Lite mantém uma experiência otimizada para iPhones, 
-                mesmo quando outras funcionalidades estiverem disponíveis.
+                O Dashboard iOS mantém uma experiência otimizada para dispositivos móveis, 
+                com interface simplificada e melhor performance.
                 {profile?.role === 'admin' && (
-                  <> Administradores podem forçar o uso do dashboard normal mesmo em iPhones.</>
+                  <> Administradores podem forçar o uso do dashboard normal mesmo em dispositivos móveis.</>
                 )}
               </p>
             </div>

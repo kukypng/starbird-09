@@ -10,10 +10,9 @@ export const BetaFeaturesSettings = () => {
   const { toast } = useToast();
   const [dashboardLiteEnabled, setDashboardLiteEnabled] = useState(false);
 
-  // Verificar se é Android e admin
-  const isAndroid = /Android/.test(navigator.userAgent);
+  // Verificar se é admin
   const isAdmin = hasPermission('admin');
-  const canUseBeta = isAndroid && isAdmin;
+  const canUseBeta = isAdmin;
 
   useEffect(() => {
     // Carregar configuração do localStorage
@@ -26,9 +25,9 @@ export const BetaFeaturesSettings = () => {
     localStorage.setItem('dashboard-lite-enabled', enabled.toString());
     
     toast({
-      title: enabled ? 'Dashboard Lite ativado' : 'Dashboard Lite desativado',
+      title: enabled ? 'Dashboard iOS ativado' : 'Dashboard iOS desativado',
       description: enabled 
-        ? 'Você será redirecionado para a versão Lite na próxima vez que acessar o dashboard.'
+        ? 'Você será redirecionado para a versão iOS na próxima vez que acessar o dashboard.'
         : 'Você voltará a usar a versão normal do dashboard.',
     });
 
@@ -46,13 +45,12 @@ export const BetaFeaturesSettings = () => {
         <CardHeader>
           <CardTitle>Funcionalidades Beta</CardTitle>
           <CardDescription>
-            Recursos experimentais disponíveis apenas para administradores em dispositivos Android.
+            Recursos experimentais disponíveis apenas para administradores.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground">
             {!isAdmin && 'Você precisa ser administrador para acessar essas funcionalidades.'}
-            {isAdmin && !isAndroid && 'Essas funcionalidades estão disponíveis apenas para dispositivos Android.'}
           </p>
         </CardContent>
       </Card>
@@ -70,9 +68,9 @@ export const BetaFeaturesSettings = () => {
       <CardContent className="space-y-6">
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <Label htmlFor="dashboard-lite">Dashboard Lite Experimental</Label>
+            <Label htmlFor="dashboard-lite">Dashboard iOS</Label>
             <p className="text-sm text-muted-foreground">
-              Ativar a versão otimizada da dashboard (desenvolvida para iOS Safari, mas disponível para testes em Android)
+              Usar a versão otimizada para dispositivos móveis (desenvolvida originalmente para iOS Safari)
             </p>
           </div>
           <Switch
@@ -83,10 +81,10 @@ export const BetaFeaturesSettings = () => {
         </div>
         
         {dashboardLiteEnabled && (
-          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-md">
-            <p className="text-sm text-yellow-800 dark:text-yellow-200">
-              <strong>Experimental:</strong> Esta é uma versão simplificada da dashboard, 
-              otimizada para dispositivos móveis com Safari. Algumas funcionalidades podem estar limitadas.
+          <div className="p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
+            <p className="text-sm text-blue-800 dark:text-blue-200">
+              <strong>Dashboard iOS:</strong> Versão otimizada para dispositivos móveis, 
+              com interface simplificada e melhor performance em telas menores.
             </p>
           </div>
         )}

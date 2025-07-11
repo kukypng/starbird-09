@@ -39,7 +39,7 @@ const detectIOSSafari = (): IOSInfo => {
 
   const isIOSSafari = isIOS && isSafari;
   
-  // Usar Lite se for iPhone (qualquer navegador) versão 16+ ou se estiver configurado manualmente
+  // Usar Lite se for iPhone (qualquer navegador) versão 16+ 
   const shouldUseLite = isIPhone && (version === null || version >= 16);
 
   return {
@@ -66,7 +66,7 @@ export const useIOSDetection = (): IOSInfo => {
         shouldUseLite: false,
       }));
     } else if (manualLiteEnabled) {
-      // Usuário habilitou lite manualmente
+      // Admin habilitou Dashboard iOS manualmente (funciona para qualquer dispositivo)
       setIOSInfo(prev => ({
         ...prev,
         shouldUseLite: true,
