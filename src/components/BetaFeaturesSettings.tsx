@@ -6,16 +6,12 @@ import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
 
 export const BetaFeaturesSettings = () => {
-  const { hasPermission, profile } = useAuth();
+  const { hasRole, profile } = useAuth();
   const { toast } = useToast();
   const [dashboardLiteEnabled, setDashboardLiteEnabled] = useState(false);
 
-  // Debug logs
-  console.log('BetaFeaturesSettings - profile:', profile);
-  console.log('BetaFeaturesSettings - hasPermission admin:', hasPermission('admin'));
-  
   // Verificar se é admin
-  const isAdmin = hasPermission('admin');
+  const isAdmin = hasRole('admin');
   const canUseBeta = isAdmin;
 
   useEffect(() => {
